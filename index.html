@@ -70,6 +70,28 @@
           return next();
         }
       }
+      var scroll = function (e) {
+        var direct = 0;
+        e = e || window.event;
+        if (e.wheelDelta) {
+          if (e.wheelDelta > 0) {
+            prev();
+          } else {
+            next();
+          }
+          return
+        }
+        if (e.detail) {
+          if (e.detail > 0) {
+            next();
+          } else {
+            prev();
+          }
+          return
+        }
+      }
+      document.body.onmousewheel = scroll;
+      document.body.addEventListener("DOMMouseScroll", scroll);
     </script>
   </body>
 </html>
